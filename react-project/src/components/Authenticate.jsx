@@ -6,8 +6,10 @@ export default function Authenticate({ token }) {
   const [error, setError] = useState(null);
 
   async function handleClick() {
-    // console.log(token);
-    console.log(token);
+    if (!token) {
+      setError("Please sign up first.");
+      return;
+    }
     try {
       const response = await fetch(
         "https://fsa-jwt-practice.herokuapp.com/authenticate",
